@@ -1,0 +1,6 @@
+Volotea/packages/*
+Volotea/Volotea/bin/*
+Volotea/.vs/*
+*.suo
+Volotea/Volotea/obj/*
+Volotea/Volotea/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
