@@ -62,5 +62,10 @@ namespace Volotea.Steps
         {
             Driver.Quit();
         }
+
+        public BasePage(BasePage bp)
+        {
+            this.Driver = bp.Driver;
+        }
     }
 }

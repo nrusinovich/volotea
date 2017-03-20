@@ -9,29 +9,27 @@ using Volotea.Utils;
 
 namespace Volotea.Steps
 {
-    public class MainPage
+    public class MainPage : BasePage
     {
-        private IWebDriver driver;
         private string depAirportXPath = "//input[@placeholder = 'Please choose departure airport']";
         private string depXPath = "//a[contains(text(), 'SXB')]";
         private string desAirportXPath = "//input[@placeholder = 'Please choose destination airport']";
         private string desXPath = "//a[contains(text(), 'NCE')]";
         private string findFlightsXPath = "//a[contains(text(), 'FIND FLIGHTS')]";
 
-        public MainPage(IWebDriver driver)
+        public MainPage(BasePage bp) : base(bp)
         {
-            this.driver = driver;
         }
 
-        public BookingFirstStepPage SelectFlight(IWebDriver driver)
+        public BookingFirstStepPage SelectFlight(BasePage bp)
         {
-            driver.Navigate().Refresh();
-            WebElementHelper.WaitAndClick(driver, By.XPath(depAirportXPath));
-            WebElementHelper.WaitAndClick(driver, By.XPath(depXPath));
-            WebElementHelper.WaitAndClick(driver, By.XPath(desAirportXPath));
-            WebElementHelper.WaitAndClick(driver, By.XPath(desXPath));
-            WebElementHelper.WaitAndClick(driver, By.XPath(findFlightsXPath));
-            return new BookingFirstStepPage(driver);
+            bp.Refresh();
+            WebElementHelper.WaitAndClick(Driver, By.XPath(depAirportXPath));
+            WebElementHelper.WaitAndClick(Driver, By.XPath(depXPath));
+            WebElementHelper.WaitAndClick(Driver, By.XPath(desAirportXPath));
+            WebElementHelper.WaitAndClick(Driver, By.XPath(desXPath));
+            WebElementHelper.WaitAndClick(Driver, By.XPath(findFlightsXPath));
+            return new BookingFirstStepPage(bp);
         }
     }
 }
