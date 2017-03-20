@@ -72,7 +72,6 @@
     <Compile Include="Steps\DestinationPage.cs" />
     <Compile Include="Steps\DestinationsMapPage.cs" />
     <Compile Include="Steps\LoginElement.cs" />
-    <Compile Include="Steps\LoginPage.cs" />
     <Compile Include="Steps\MainPage.cs" />
     <Compile Include="Steps\PaymentStepPage.cs" />
     <Compile Include="Steps\SearchFlightsPage.cs" />

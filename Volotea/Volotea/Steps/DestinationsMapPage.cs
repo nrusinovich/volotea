@@ -7,15 +7,17 @@ using System.Threading.Tasks;
 
 namespace Volotea.Steps
 {
-    public class DestinationsMapPage
+    public class DestinationsMapPage : BasePage
     {
         private string mapItemXPath = "//p[@id = '***']";
         public string Message { get; private set; }
-        private IWebDriver driver;
 
-        public DestinationsMapPage(IWebDriver driver)
+        public DestinationsMapPage(string browser) : base(browser)
         {
-            this.driver = driver;
+        }
+
+        public DestinationsMapPage(BasePage bp) : base(bp)
+        {
         }
 
         public string CheckCityList(DestinationCityPage page)
@@ -24,7 +26,7 @@ namespace Volotea.Steps
             foreach (string str in page.cityCodeList)
             {
                 string cityOnMapXPath = mapItemXPath.Replace("***", str);
-                if (!driver.FindElement(By.XPath(cityOnMapXPath)).Enabled)
+                if (!Driver.FindElement(By.XPath(cityOnMapXPath)).Enabled)
                 {
                     Message = string.Format("city {0} does not found", str);
                     sb.Append(Message);
