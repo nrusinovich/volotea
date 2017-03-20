@@ -63,7 +63,7 @@ namespace Volotea
                     }
                     break;
             }
-            driver.Manage().Window.Maximize();
+          //  driver.Manage().Window.Maximize();
             return driver;
         }
     }
