@@ -17,7 +17,8 @@ namespace Volotea.Tests
         [Test]
         public void TicketBookingCheck()
         {
-            page.GoTo(Data.TestData.BaseURL);
+            page.GoTo(Data.TestData.BaseURL);            
+            page.Driver.Manage().Window.Maximize();
             MainPage mp = page.SignIn(page, Data.TestData.Login, Data.TestData.Password);
             BookingFirstStepPage bfsp = mp.SelectFlight(mp);
             BookingSecondStepPage bssp = bfsp.NextStep(bfsp);
