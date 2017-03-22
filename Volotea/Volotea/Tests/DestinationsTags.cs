@@ -22,7 +22,7 @@ namespace Volotea.Tests
             page.GoToDestinationsPage();
         }
         public static List<string> list = XmlDataWorker.GetCitiesFromXml(TestData.CitiesXmlFile);
-        [Ignore("Problems with data file path")]
+        //[Ignore("Problems with data file path")]
         [Test, TestCaseSource("list")]
         public void CheckDestinationTags(string city)
         {
