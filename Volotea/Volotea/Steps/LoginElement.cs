@@ -19,6 +19,7 @@ namespace Volotea.Steps
 
         public LoginElement(string browser) : base(browser)
         {
+            Driver.Manage().Window.Maximize();
         }
 
         public IWebElement SignInElement
