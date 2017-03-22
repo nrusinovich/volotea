@@ -21,6 +21,8 @@ namespace Volotea.Steps
         public void GoTo(string url)
         {
             Driver.Navigate().GoToUrl(url);
+            
+            Driver.Manage().Window.Maximize();
         }
 
         public void Refresh()
