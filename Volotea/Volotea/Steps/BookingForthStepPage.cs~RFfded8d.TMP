@@ -22,15 +22,15 @@ namespace Volotea.Steps
         public PaymentStepPage NextStep(BasePage bp)
         {
             WebElementHelper.MoveToElementAndClick(Driver, By.XPath(seatsCheckBoxXPath));
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
             WebElementHelper.MoveToElementAndClick(Driver, By.XPath(bagsCheckBoxXPath));
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
             WebElementHelper.MoveToElementAndClick(Driver, By.XPath(flexCheckBoxXPath));
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
             WebElementHelper.MoveToElementAndClick(Driver, By.XPath(insuranceCheckBoxXPath));
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
             WebElementHelper.MoveToElementAndClick(Driver, By.XPath(checkInCheckBoxXPath));
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
             WebElementHelper.MoveToElementAndClick(Driver, By.XPath(nextStepButtonXPath));
             return new PaymentStepPage(bp);
         }
