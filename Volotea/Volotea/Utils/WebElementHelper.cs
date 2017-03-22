@@ -40,7 +40,7 @@ namespace Volotea.Utils
         public static void WaitJS(IWebDriver Driver)
         {
             WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(5));
-            wait.Until();
+          //  wait.Until();
         }
     }
 }
