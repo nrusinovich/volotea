@@ -121,7 +121,7 @@
     <value>http://www.volotea.com/en</value>
   </data>
   <data name="CitiesXmlFile" xml:space="preserve">
-    <value>Volotea/Data/cities.xml</value>
+    <value>Volotea/Volotea/Data/cities.xml</value>
   </data>
   <data name="DestinationsURL" xml:space="preserve">
     <value>http://www.volotea.com/en/inspiration/destinations/</value>
