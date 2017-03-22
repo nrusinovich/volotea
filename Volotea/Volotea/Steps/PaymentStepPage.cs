@@ -17,7 +17,8 @@ namespace Volotea.Steps
 
         public WaitingPage BookThisFlight(BasePage bp)
         {
-            //WebElementHelper.WaitAndClick(Driver, By.XPath(flexWindowXPath));
+            Thread.Sleep(2000);
+            WebElementHelper.WaitAndClick(Driver, By.XPath(flexWindowXPath));
             WebElementHelper.WaitAndSendKeys(Driver, By.XPath(cvvXPath), cvv);
             WebElementHelper.WaitAndClick(Driver, By.XPath(bookThisFlightButtonXPath));
             return new WaitingPage(bp);
