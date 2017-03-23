@@ -11,7 +11,7 @@ namespace Volotea.Tests
         [SetUp]
         public void SetUp()
         {
-            page = new Steps.LoginElement("chrome");
+            page = new Steps.LoginElement("chrome-without-popups");
         }
 
         [Test]

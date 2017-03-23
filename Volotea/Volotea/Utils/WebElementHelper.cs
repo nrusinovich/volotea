@@ -36,11 +36,12 @@ namespace Volotea.Utils
             Actions act = new Actions(Driver);
             act.MoveToElement(Driver.FindElement(locator)).Click().Build().Perform();
         }
-
+        /*
         public static void WaitJS(IWebDriver Driver)
         {
             WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(5));
-          //  wait.Until();
-        }
+            wait.Until();
+        }*/
+
     }
 }
