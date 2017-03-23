@@ -42,5 +42,6 @@ namespace Volotea.Utils
             WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(5));
             wait.Until();
         }*/
+
     }
 }
