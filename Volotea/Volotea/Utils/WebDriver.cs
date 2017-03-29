@@ -62,8 +62,21 @@ namespace Volotea
                             TimeSpan.FromSeconds(600));
                     }
                     break;
+
+                case "chrome-without-popups":
+                    if (driver == null)
+                    {
+                        ChromeOptions options = new ChromeOptions();
+                        options.AddArguments("--start-maximized");
+                        //options.AddArguments("--disable-javascript");
+                        //options.AddArguments("test-type");
+                        options.AddArguments("--enable-popup-blocking");
+                        options.ToCapabilities();
+                        ChromeDriverService service = ChromeDriverService.CreateDefaultService();
+                        driver = new ChromeDriver(service, options);
+                    }
+                    break;
             }
-            driver.Manage().Window.Maximize();
             return driver;
         }
     }

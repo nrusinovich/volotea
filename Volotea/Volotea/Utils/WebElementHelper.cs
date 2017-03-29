@@ -11,31 +11,29 @@ namespace Volotea.Utils
 {
     public static class WebElementHelper
     {
-        public static IWebElement WaitUntilElementVisible(IWebDriver driver, By locator)
+        public static IWebElement WaitUntilElementVisible(IWebDriver Driver, By locator)
         {
-            IWebElement element = driver.FindElement(locator);
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
             wait.Until(ExpectedConditions.ElementIsVisible(locator));
-            return element;
+            return Driver.FindElement(locator);
         }
 
-        public static void WaitAndClick(IWebDriver driver, By locator)
+        public static void WaitAndClick(IWebDriver Driver, By locator)
         {
-            WaitUntilElementVisible(driver, locator).Click();
+            WaitUntilElementVisible(Driver, locator).Click();
         }
 
-        public static void WaitAndSendKeys(IWebDriver driver, By locator, string str)
+        public static void WaitAndSendKeys(IWebDriver Driver, By locator, string str)
         {
-            WaitUntilElementVisible(driver, locator).SendKeys(str);
+            WaitUntilElementVisible(Driver, locator).SendKeys(str);
         }
 
-        public static void MoveToElementAndClick(IWebDriver driver, By locator)
+        public static void MoveToElementAndClick(IWebDriver Driver, By locator)
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
             wait.Until(ExpectedConditions.ElementExists(locator));
-            Actions act = new Actions(driver);
-            act.MoveToElement(driver.FindElement(locator)).Click();
-            act.Perform();
+            Actions act = new Actions(Driver);
+            act.MoveToElement(Driver.FindElement(locator)).Click().Build().Perform();
         }
     }
 }

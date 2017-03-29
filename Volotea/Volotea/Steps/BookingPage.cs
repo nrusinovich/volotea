@@ -10,7 +10,7 @@ using System.Threading;
 
 namespace Volotea.Steps
 {
-    class BookingPage : PageFactory
+    class BookingPage : BasePage
     {
         IWebElement Origin { get; set; }
         IWebElement Destination { get; set; }

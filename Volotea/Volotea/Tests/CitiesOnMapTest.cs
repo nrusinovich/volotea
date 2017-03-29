@@ -12,32 +12,20 @@ using Volotea.Steps;
 namespace Volotea.Tests
 {
     [TestFixture]
-    public class CitiesOnMapTest
+    public class CitiesOnMapTest : BaseTest
     {
-        public DestinationCityPage destCityPage;
-        public DestinationsMapPage destMapPage;
-        public IWebDriver driver = WebDriver.GetBrowser("chrome");
-
         [SetUp]
         public void SetUp()
         {
-            destCityPage = new DestinationCityPage(driver);
+            page = new Steps.DestinationCityPage("chrome");
         }
 
         [Test]
         public void CitiesOnMapCheck()
         {
-            destCityPage.GetCitiesCodeList(driver);
-
-            destMapPage = destCityPage.GoToMapPage();
-
-            Assert.IsNull(destMapPage.CheckCityList(destCityPage), destMapPage.Message);
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            driver.Quit();
+            page.GetCitiesCodeList();
+            DestinationsMapPage destMapPage = page.GoToMapPage(page);
+            Assert.IsNull(destMapPage.CheckCityList(page), destMapPage.Message);
         }
     }
 }
