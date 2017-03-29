@@ -9,6 +9,7 @@ using System.Threading;
 namespace Volotea.Tests
 {
     [TestFixture]
+    [Ignore("Test of Uladzimir Shved")]
     class HotelsTest : BaseTest
     {
         [SetUp]
