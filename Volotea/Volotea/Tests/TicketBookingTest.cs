@@ -4,7 +4,7 @@ using Volotea.Steps;
 
 namespace Volotea.Tests
 {
-   // [Ignore("some problems w/Jenkins")]
+    [Ignore("test have not problems during run on local machine, maybe there are some problems with popup windows")]
     [TestFixture]
     public class TicketBookingTest : BaseTest
     {
@@ -17,7 +17,7 @@ namespace Volotea.Tests
         [Test]
         public void TicketBookingCheck()
         {
-            page.GoTo(Data.TestData.BaseURL);            
+            page.GoTo(Data.TestData.BaseURL);
             MainPage mp = page.SignIn(page, Data.TestData.Login, Data.TestData.Password);
             BookingFirstStepPage bfsp = mp.SelectFlight(mp);
             BookingSecondStepPage bssp = bfsp.NextStep(bfsp);
