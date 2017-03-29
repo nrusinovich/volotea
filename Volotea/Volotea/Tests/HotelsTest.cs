@@ -17,7 +17,7 @@ namespace Volotea.Tests
             page = new Steps.HotelsPage("chrome");            
         }
 
-        [Test]
+        [Test][Ignore("Test of Uladzimir Shved")]
         public void TestCheapestHotel()
         {
             page.GoTo("http://hotels.volotea.com/");
