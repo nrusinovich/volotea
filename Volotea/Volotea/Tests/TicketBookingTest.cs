@@ -4,7 +4,7 @@ using Volotea.Steps;
 
 namespace Volotea.Tests
 {
-    [Ignore("test have not problems during run on local machine, maybe there are some problems with popup windows")]
+    [Ignore("test hasn't any problems during run on local machine, maybe there are some problems with popup windows")]
     [TestFixture]
     public class TicketBookingTest : BaseTest
     {
