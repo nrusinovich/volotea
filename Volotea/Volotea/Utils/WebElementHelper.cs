@@ -11,37 +11,31 @@ namespace Volotea.Utils
 {
     public static class WebElementHelper
     {
-        public static IWebElement WaitUntilElementVisible(IWebDriver Driver, By locator)
+        public static IWebElement WaitUntilElementVisible(IWebDriver driver, By locator)
         {
-            //IWebElement element = Driver.FindElement(locator);
-            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+            IWebElement element = driver.FindElement(locator);
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             wait.Until(ExpectedConditions.ElementIsVisible(locator));
-            return Driver.FindElement(locator);
+            return element;
         }
 
-        public static void WaitAndClick(IWebDriver Driver, By locator)
+        public static void WaitAndClick(IWebDriver driver, By locator)
         {
-            WaitUntilElementVisible(Driver, locator).Click();
+            WaitUntilElementVisible(driver, locator).Click();
         }
 
-        public static void WaitAndSendKeys(IWebDriver Driver, By locator, string str)
+        public static void WaitAndSendKeys(IWebDriver driver, By locator, string str)
         {
-            WaitUntilElementVisible(Driver, locator).SendKeys(str);
+            WaitUntilElementVisible(driver, locator).SendKeys(str);
         }
 
-        public static void MoveToElementAndClick(IWebDriver Driver, By locator)
+        public static void MoveToElementAndClick(IWebDriver driver, By locator)
         {
-            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             wait.Until(ExpectedConditions.ElementExists(locator));
-            Actions act = new Actions(Driver);
-            act.MoveToElement(Driver.FindElement(locator)).Click().Build().Perform();
+            Actions act = new Actions(driver);
+            act.MoveToElement(driver.FindElement(locator)).Click();
+            act.Perform();
         }
-        /*
-        public static void WaitJS(IWebDriver Driver)
-        {
-            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(5));
-            wait.Until();
-        }*/
-
     }
 }

@@ -10,18 +10,20 @@ using Volotea.Utils;
 
 namespace Volotea.Steps
 {
-    public class BookingFirstStepPage : BasePage
+    public class BookingFirstStepPage
     {
+        private IWebDriver driver;
         private string nextStepButtonXPath = "//a[contains(text(), 'NEXT STEP')]";
 
-        public BookingFirstStepPage(BasePage bp) : base(bp)
+        public BookingFirstStepPage(IWebDriver driver)
         {
+            this.driver = driver;
         }
 
-        public BookingSecondStepPage NextStep(BasePage bp)
+        public BookingSecondStepPage NextStep(IWebDriver driver)
         {
-            WebElementHelper.MoveToElementAndClick(Driver, By.XPath(nextStepButtonXPath));
-            return new BookingSecondStepPage(bp);
+            WebElementHelper.MoveToElementAndClick(driver, By.XPath(nextStepButtonXPath));
+            return new BookingSecondStepPage(driver);
         }
     }
 }

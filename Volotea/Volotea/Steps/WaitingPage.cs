@@ -3,17 +3,19 @@ using Volotea.Utils;
 
 namespace Volotea.Steps
 {
-    public class WaitingPage : BasePage
+    public class WaitingPage
     {
+        private IWebDriver driver;
         private string paymentMessageXPath = "//h1[contains(text(), 'THANK YOU FOR YOUR PATIENCE')]";
 
-        public WaitingPage(BasePage bp) : base(bp)
+        public WaitingPage(IWebDriver driver)
         {
+            this.driver = driver;
         }
 
-        public bool IsPaymentPass(BasePage bp)
+        public bool IsPaymentPass(IWebDriver driver)
         {
-            if (Driver.FindElement(By.XPath(paymentMessageXPath)).Displayed)
+            if (driver.FindElement(By.XPath(paymentMessageXPath)).Displayed)
             {
                 return true;
             }

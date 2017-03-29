@@ -19,7 +19,6 @@ namespace Volotea.Steps
 
         public LoginElement(string browser) : base(browser)
         {
-        
         }
 
         public IWebElement SignInElement
@@ -74,17 +73,6 @@ namespace Volotea.Steps
             var wait = new WebDriverWait(Driver, TimeSpan.FromMinutes(1));
             var clickableElement = wait.Until(ExpectedConditions.ElementToBeClickable(yourProfileLocator));
             return YourProfileElement.Text;
-        }
-
-        public MainPage SignIn(BasePage bp, string username, string password)
-        {
-            SignInElement.Click();
-            this.WaitUntilDisplayed(UsernameFieldElement);
-            this.WaitUntilDisplayed(UserpasswordElement);
-            this.FillFields(username, password);
-            RememberLoginElement.Click();
-            LoginButtonElement.Click();
-            return new MainPage(bp);
         }
     }
 }

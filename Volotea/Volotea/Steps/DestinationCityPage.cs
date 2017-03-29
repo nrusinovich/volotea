@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Volotea.Utils;
 
 namespace Volotea.Steps
 {
-    public class DestinationCityPage : BasePage
+    public class DestinationCityPage
     {
         private string mainPageUrl = "http://www.volotea.com/en";
         private string mapUrl = "http://www.volotea.com/en/destinations/";
@@ -17,17 +16,19 @@ namespace Volotea.Steps
         private string cityXPath = "//div[contains(@class, 'col-sm-3')][..//li]";
         string pattern = "[A-Z]{3}";
         public List<string> cityCodeList { get; private set; }
+        private IWebDriver driver;
 
-        public DestinationCityPage(string browser) : base(browser)
+        public DestinationCityPage(IWebDriver driver)
         {
+            this.driver = driver;
         }
 
-        public void GetCitiesCodeList()
+        public void GetCitiesCodeList(IWebDriver driver)
         {
-            Driver.Navigate().GoToUrl(mainPageUrl);
-            WebElementHelper.WaitAndClick(Driver, By.XPath(citiesTableXPath));
+            driver.Navigate().GoToUrl(mainPageUrl);
+            driver.FindElement(By.XPath(citiesTableXPath)).Click();
 
-            var tmpList = Driver.FindElements(By.XPath(cityXPath));
+            var tmpList = driver.FindElements(By.XPath(cityXPath));
 
             List<string> cityCodeList = new List<string>();
             List<string> draftList = new List<string>();
@@ -49,10 +50,10 @@ namespace Volotea.Steps
             this.cityCodeList = cityCodeList;
         }
 
-        public DestinationsMapPage GoToMapPage(BasePage bp)
+        public DestinationsMapPage GoToMapPage()
         {
-            Driver.Navigate().GoToUrl(mapUrl);
-            return new DestinationsMapPage(bp);
+            driver.Navigate().GoToUrl(mapUrl);
+            return new DestinationsMapPage(driver);
         }
     }
 }

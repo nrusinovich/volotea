@@ -4,24 +4,25 @@ using Volotea.Utils;
 
 namespace Volotea.Steps
 {
-    public class PaymentStepPage : BasePage
+    public class PaymentStepPage
     {
+        private IWebDriver driver;
         private string flexWindowXPath = "//a[@id = 'closeFlexLink']";
         private string cvvXPath = "//input[@id = 'cvv1']";
         private string cvv = "123";
         private string bookThisFlightButtonXPath = "//a[@id = 'ControlGroupPaymentNewBottom_LinkButtonSubmit']";
 
-        public PaymentStepPage(BasePage bp) : base(bp)
+        public PaymentStepPage(IWebDriver driver)
         {
+            this.driver = driver;
         }
 
-        public WaitingPage BookThisFlight(BasePage bp)
+        public WaitingPage BookThisFlight(IWebDriver driver)
         {
-            Thread.Sleep(2000);
-            WebElementHelper.WaitAndClick(Driver, By.XPath(flexWindowXPath));
-            WebElementHelper.WaitAndSendKeys(Driver, By.XPath(cvvXPath), cvv);
-            WebElementHelper.WaitAndClick(Driver, By.XPath(bookThisFlightButtonXPath));
-            return new WaitingPage(bp);
+            WebElementHelper.WaitAndClick(driver, By.XPath(flexWindowXPath));
+            WebElementHelper.WaitAndSendKeys(driver, By.XPath(cvvXPath), cvv);
+            WebElementHelper.WaitAndClick(driver, By.XPath(bookThisFlightButtonXPath));
+            return new WaitingPage(driver);
         }
     }
 }

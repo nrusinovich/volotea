@@ -5,18 +5,20 @@ using Volotea.Utils;
 
 namespace Volotea.Steps
 {
-    public class BookingThirdStepPage : BasePage
+    public class BookingThirdStepPage
     {
+        private IWebDriver driver;
         private string continueAndCustomizeButtonXPath = "//a[@id = 'continueAndCustomizeButton']";
 
-        public BookingThirdStepPage(BasePage bp) : base(bp)
+        public BookingThirdStepPage(IWebDriver driver)
         {
+            this.driver = driver;
         }
 
-        public BookingForthStepPage ContinueAndCustomize(BasePage bp)
+        public BookingForthStepPage ContinueAndCustomize(IWebDriver driver)
         {
-            WebElementHelper.MoveToElementAndClick(Driver, By.XPath(continueAndCustomizeButtonXPath));
-            return new BookingForthStepPage(bp);
+            WebElementHelper.MoveToElementAndClick(driver, By.XPath(continueAndCustomizeButtonXPath));
+            return new BookingForthStepPage(driver);
         }
     }
 }

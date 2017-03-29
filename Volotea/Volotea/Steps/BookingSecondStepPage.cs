@@ -5,20 +5,22 @@ using Volotea.Utils;
 
 namespace Volotea.Steps
 {
-    public class BookingSecondStepPage : BasePage
+    public class BookingSecondStepPage
     {
+        private IWebDriver driver;
         private string conditionsOfCarriageXPath = "//input[@name = 'accept']";
         private string nextStepButtonXPath = "//a[contains(text(), 'NEXT STEP')]";
 
-        public BookingSecondStepPage(BasePage bp) : base(bp)
+        public BookingSecondStepPage(IWebDriver driver)
         {
+            this.driver = driver;
         }
 
-        public BookingThirdStepPage NextStep(BasePage bp)
+        public BookingThirdStepPage NextStep(IWebDriver driver)
         {
-            WebElementHelper.MoveToElementAndClick(Driver, By.XPath(conditionsOfCarriageXPath));
-            WebElementHelper.MoveToElementAndClick(Driver, By.XPath(nextStepButtonXPath));
-            return new BookingThirdStepPage(bp);
+            WebElementHelper.MoveToElementAndClick(driver, By.XPath(conditionsOfCarriageXPath));
+            WebElementHelper.MoveToElementAndClick(driver, By.XPath(nextStepButtonXPath));
+            return new BookingThirdStepPage(driver);
         }
     }
 }

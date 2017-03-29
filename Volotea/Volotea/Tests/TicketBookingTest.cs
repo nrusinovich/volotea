@@ -1,31 +1,41 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Interactions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using Volotea.Steps;
 
 namespace Volotea.Tests
 {
-   // [Ignore("some problems w/Jenkins")]
     [TestFixture]
-    public class TicketBookingTest : BaseTest
+    public class TicketBookingTest
     {
-        [SetUp]
-        public void SetUp()
-        {
-            page = new Steps.LoginElement("chrome-without-popups");
-        }
+        public IWebDriver driver = WebDriver.GetBrowser("chrome");
 
         [Test]
         public void TicketBookingCheck()
         {
-            page.GoTo(Data.TestData.BaseURL);            
-            MainPage mp = page.SignIn(page, Data.TestData.Login, Data.TestData.Password);
-            BookingFirstStepPage bfsp = mp.SelectFlight(mp);
-            BookingSecondStepPage bssp = bfsp.NextStep(bfsp);
-            BookingThirdStepPage btsp = bssp.NextStep(bssp);
-            BookingForthStepPage bForthSP = btsp.ContinueAndCustomize(btsp);
-            PaymentStepPage psp = bForthSP.NextStep(bForthSP);
-            WaitingPage wp = psp.BookThisFlight(psp);
-            Assert.True(wp.IsPaymentPass(wp));
+            driver.Manage().Window.Maximize();
+            LoginPage lp = new LoginPage(driver);
+            MainPage mp = lp.LogiIn(driver);
+            BookingFirstStepPage bfsp = mp.SelectFlight(driver);
+            BookingSecondStepPage bssp = bfsp.NextStep(driver);
+            BookingThirdStepPage btsp = bssp.NextStep(driver);
+            BookingForthStepPage bForthSP = btsp.ContinueAndCustomize(driver);
+            PaymentStepPage psp = bForthSP.NextStep(driver);
+            WaitingPage wp = psp.BookThisFlight(driver);
+            Assert.True(wp.IsPaymentPass(driver));
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            driver.Quit();
         }
     }
 }
